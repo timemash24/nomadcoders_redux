@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { actionCreators } from './store';
 
 function Detail({ toDos, onClick }) {
-  const id = useParams().id;
+  const id = parseInt(useParams().id);
   const toDo = toDos.find((toDo) => toDo.id === parseInt(id));
   const navigate = useNavigate();
 
@@ -25,8 +25,7 @@ function mapStateToProps(state) {
   return { toDos: state };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
-  console.log(ownProps);
+function mapDispatchToProps(dispatch) {
   return { onClick: (id) => dispatch(actionCreators.deleteToDo(id)) };
 }
 
